@@ -14,7 +14,7 @@ export function Contact() {
     setIsSubmitting(true)
     try {
       const formData = new FormData(e.currentTarget)
-      const response = await fetch('https://formspree.io/f/mbdygjrn', {
+      const response = await fetch('https://formspree.io/f/xreazyvy', {
         method: 'POST',
         body: formData,
       })
@@ -109,10 +109,10 @@ export function Contact() {
                   <div>
                     <p className="text-foreground font-medium text-sm">Email</p>
                     <a
-                      href="mailto:santhoshinipac@gmail.com"
+                      href="mailto:auradigital.studio.sc@gmail.com"
                       className="text-foreground/70 hover:text-primary transition-colors text-sm"
                     >
-                      santhoshinipac@gmail.com
+                      auradigital.studio.sc@gmail.com
                     </a>
                   </div>
                 </div>

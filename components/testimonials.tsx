@@ -5,7 +5,7 @@ export function Testimonials() {
     {
       id: 1,
       content:
-        'Infraly delivered our project on time and exceeded all our expectations. The code quality is exceptional and the entire team was incredibly responsive to our feedback.',
+        'Auradigital-sc delivered our project on time and exceeded all our expectations. The code quality is exceptional and the entire team was incredibly responsive to our feedback.',
       author: 'Sarah Johnson',
       role: 'Founder, TechStartup Inc.',
       rating: 5,
@@ -13,7 +13,7 @@ export function Testimonials() {
     {
       id: 2,
       content:
-        'Working with Infraly was a game-changer for our business. They didn\'t just build what we asked for—they provided strategic insights that improved our entire product.',
+        'Working with Auradigital-sc was a game-changer for our business. They didn\'t just build what we asked for—they provided strategic insights that improved our entire product.',
       author: 'Michael Chen',
       role: 'Product Director, Commerce Co.',
       rating: 5,
@@ -21,7 +21,7 @@ export function Testimonials() {
     {
       id: 3,
       content:
-        'The attention to detail and commitment to clean, maintainable code sets Infraly apart. They\'re not just developers; they\'re partners invested in your success.',
+        'The attention to detail and commitment to clean, maintainable code sets Auradigital-sc apart. They\'re not just developers; they\'re partners invested in your success.',
       author: 'Emma Rodriguez',
       role: 'CEO, Creative Agency',
       rating: 5,
@@ -29,7 +29,7 @@ export function Testimonials() {
     {
       id: 4,
       content:
-        'Best decision we made was partnering with Infraly for our MVP. Their rapid development approach got us to market faster than we thought possible.',
+        'Best decision we made was partnering with Auradigital-sc for our MVP. Their rapid development approach got us to market faster than we thought possible.',
       author: 'David Williams',
       role: 'Co-founder, SaaS Venture',
       rating: 5,
@@ -45,7 +45,7 @@ export function Testimonials() {
     {
       id: 6,
       content:
-        'Professional, communicative, and technically skilled. Infraly handled our complex backend requirements with ease and delivered a bulletproof solution.',
+        'Professional, communicative, and technically skilled. Auradigital-sc handled our complex backend requirements with ease and delivered a bulletproof solution.',
       author: 'James Murphy',
       role: 'CTO, Financial Tech Firm',
       rating: 5,

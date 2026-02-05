@@ -8,7 +8,7 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Infraly – Web Development Agency',
+  title: 'Auradigital-sc – Web Development Agency',
   description: 'Building scalable web experiences. From design to deployment, we craft fast, secure, and scalable web applications.',
   generator: 'v0.app',
   icons: {

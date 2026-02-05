@@ -20,7 +20,7 @@ export function Header() {
         <div className="flex justify-between items-center h-16 md:h-20">
           {/* Logo */}
           <Link href="/" className="text-2xl md:text-3xl font-bold gradient-text hover:opacity-80 transition-opacity">
-            Infraly
+            Auradigital-sc
           </Link>
 
           {/* Desktop Navigation */}

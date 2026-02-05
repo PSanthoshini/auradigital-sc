@@ -1,4 +1,4 @@
-# Infraly
+# Auradigital-sc
 
 Building scalable web experiences. From design to deployment, we craft fast, secure, and scalable web applications.
 

@@ -23,14 +23,14 @@ export function About() {
           {/* Left Content */}
           <div>
             <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
-              About Infraly
+              About Auradigital-sc
             </h2>
             <div className="space-y-6 text-foreground/80 leading-relaxed">
               <p>
-                Infraly is a freelance web development agency dedicated to delivering end-to-end digital solutions. We specialize in crafting modern websites and full-stack web applications that combine exceptional design with robust functionality.
+                Auradigital-sc is a freelance web development agency dedicated to delivering end-to-end digital solutions. We specialize in crafting modern websites and full-stack web applications that combine exceptional design with robust functionality.
               </p>
               <p>
-                From UI/UX design and frontend development to backend systems and deployment, we handle every aspect of web development with the same level of attention and expertise. Whether you're a startup looking to launch your first MVP or an enterprise needing scalable solutions, Infraly is your trusted partner.
+                From UI/UX design and frontend development to backend systems and deployment, we handle every aspect of web development with the same level of attention and expertise. Whether you're a startup looking to launch your first MVP or an enterprise needing scalable solutions, Auradigital-sc is your trusted partner.
               </p>
             </div>
           </div>

@@ -9,7 +9,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div className="space-y-2">
-            <h3 className="text-xl font-bold">Infraly</h3>
+            <h3 className="text-xl font-bold">Auradigital-sc</h3>
             <p className="text-primary-foreground/80 text-sm">
               Building scalable web experiences that drive business results.
             </p>
@@ -70,7 +70,7 @@ export function Footer() {
         <div className="border-t border-white/10 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-center md:text-left text-sm text-primary-foreground/80">
-              © {currentYear} Infraly – Web Development Agency. All rights reserved.
+              © {currentYear} Auradigital-sc – Web Development Agency. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm">
               <a href="#" className="hover:opacity-80 transition-opacity">
