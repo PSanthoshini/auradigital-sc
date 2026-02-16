@@ -1,71 +1,81 @@
-import { Users, FileText, TrendingUp, Zap } from 'lucide-react'
+'use client'
+
+import { motion } from 'framer-motion'
 
 export function Stats() {
   const stats = [
     {
-      icon: FileText,
-      number: '50+',
-      label: 'Projects Delivered',
-      description: 'Successful projects across diverse industries and scales',
+      label: 'Premier Projects',
+      value: '100+',
+      description: 'Elite digital architectures successfully deployed globally.',
     },
     {
-      icon: Users,
-      number: '40+',
-      label: 'Happy Clients',
-      description: 'From startups to enterprises, we deliver measurable results',
+      label: 'Performance Score',
+      value: '99+',
+      description: 'Average Lighthouse performance across our premier ecosystem.',
     },
     {
-      icon: TrendingUp,
-      number: '2.5x',
-      label: 'Average ROI',
-      description: 'Our clients see significant business growth and improvement',
+      label: 'Security Rating',
+      value: 'A+',
+      description: 'Industry-leading security protocols in every architectural layer.',
     },
     {
-      icon: Zap,
-      number: '99.9%',
-      label: 'Uptime',
-      description: 'Reliable, secure, and scalable solutions you can depend on',
+      label: 'Global Partners',
+      value: '50+',
+      description: 'Elite firms and visionary brands trusting our technical mastery.',
     },
   ]
 
-  const iconColors = [
-    { bg: 'from-primary/20 to-secondary/20', icon: 'text-primary' },
-    { bg: 'from-secondary/20 to-accent/20', icon: 'text-secondary' },
-    { bg: 'from-accent/20 to-primary/20', icon: 'text-accent' },
-    { bg: 'from-primary/20 to-accent/20', icon: 'text-primary' },
-  ]
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+      },
+    },
+  }
 
   return (
-    <section className="py-2 md:py-4 bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5">
+    <section className="section-padding bg-background relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {stats.map((stat, idx) => {
-            const Icon = stat.icon
-            const colors = iconColors[idx]
-            return (
-              <div
-                key={idx}
-                className="text-center group p-6 rounded-xl border border-primary/20 bg-white/50 dark:bg-white/5 backdrop-blur-sm shadow-md hover:shadow-lg hover:shadow-primary/20 hover:border-primary/50 transition-all duration-300 slide-up"
-                style={{ animationDelay: `${idx * 100}ms` }}
-              >
-                <div className="flex justify-center mb-4">
-                  <div className={`p-3 bg-gradient-to-br ${colors.bg} rounded-lg group-hover:scale-110 transition-transform duration-300`}>
-                    <Icon className={`w-6 h-6 ${colors.icon}`} />
-                  </div>
-                </div>
-                <p className="text-4xl md:text-5xl font-bold gradient-text mb-2">
-                  {stat.number}
-                </p>
-                <p className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                  {stat.label}
-                </p>
-                <p className="text-sm text-foreground/70">
-                  {stat.description}
-                </p>
-              </div>
-            )
-          })}
-        </div>
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-2 lg:grid-cols-4 gap-8"
+        >
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              variants={itemVariants}
+              whileHover={{ y: -5, transition: { duration: 0.3 } }}
+              className="premium-card text-center flex flex-col items-center justify-center p-12 group hover:border-primary/20 transition-all duration-500"
+            >
+              <span className="text-4xl md:text-5xl font-black text-primary mb-4 tracking-tighter group-hover:scale-110 transition-transform duration-500">
+                {stat.value}
+              </span>
+              <h4 className="text-xs font-black uppercase tracking-[0.3em] text-foreground mb-4">
+                {stat.label}
+              </h4>
+              <p className="text-[10px] text-muted-foreground uppercase tracking-widest leading-relaxed font-bold">
+                {stat.description}
+              </p>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   )

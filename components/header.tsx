@@ -1,11 +1,21 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const navLinks = [
     { label: 'About', href: '#about' },
@@ -15,53 +25,59 @@ export function Header() {
   ]
 
   return (
-    <header className="sticky top-0 z-50 bg-background/80 backdrop-blur border-b border-border/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 md:h-20">
-          {/* Logo */}
-          <Link href="/" className="text-2xl md:text-3xl font-bold gradient-text hover:opacity-80 transition-opacity">
-            Auradigital-sc
-          </Link>
+    <header
+      className={cn(
+        "fixed top-6 left-0 right-0 z-50 transition-all duration-500",
+        scrolled ? "top-4" : "top-8"
+      )}
+    >
+      <div className="glass max-w-7xl mx-auto px-6 md:px-10 h-16 md:h-20 flex items-center justify-between">
+        {/* Logo */}
+        <Link href="/" className="text-xl md:text-2xl font-black tracking-tighter text-foreground flex items-center gap-2">
+          <span className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground text-xs">AD</span>
+          AURADIGITAL
+        </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex gap-8">
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex gap-10">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-muted-foreground hover:text-primary transition-all text-xs font-black uppercase tracking-widest"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
+        {/* CTA Button */}
+        <a
+          href="#contact"
+          className="hidden md:inline-flex px-8 py-3 bg-primary text-primary-foreground rounded-full hover:opacity-90 transition-all text-xs font-black uppercase tracking-widest shadow-lg shadow-primary/10"
+        >
+          Work With Us
+        </a>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden text-foreground p-2"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
+        >
+          {isOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
+      </div>
+
+      {/* Mobile Navigation */}
+      {isOpen && (
+        <div className="md:hidden glass mx-4 mt-2 p-6 slide-down">
+          <nav className="flex flex-col gap-4">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-foreground hover:text-primary transition-colors text-sm font-medium"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
-
-          {/* CTA Button */}
-          <a
-            href="#contact"
-            className="hidden md:inline-block px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity text-sm font-medium"
-          >
-            Get in Touch
-          </a>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-foreground"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <nav className="md:hidden pb-4 space-y-2">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="block px-4 py-2 text-foreground hover:text-primary transition-colors text-sm"
+                className="text-foreground/70 hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest"
                 onClick={() => setIsOpen(false)}
               >
                 {link.label}
@@ -69,14 +85,14 @@ export function Header() {
             ))}
             <a
               href="#contact"
-              className="block px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm font-medium"
+              className="mt-4 px-6 py-4 bg-primary text-primary-foreground rounded-xl text-center text-sm font-bold uppercase tracking-widest"
               onClick={() => setIsOpen(false)}
             >
-              Get in Touch
+              Work With Us
             </a>
           </nav>
-        )}
-      </div>
+        </div>
+      )}
     </header>
   )
 }

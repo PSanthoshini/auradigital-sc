@@ -4,80 +4,80 @@ export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-primary text-primary-foreground">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 md:py-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+    <footer className="bg-foreground text-background">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-24">
           {/* Brand */}
-          <div className="space-y-2">
-            <h3 className="text-xl font-bold">Auradigital-sc</h3>
-            <p className="text-primary-foreground/80 text-sm">
-              Building scalable web experiences that drive business results.
+          <div className="space-y-8 col-span-1 md:col-span-1">
+            <h3 className="text-2xl font-black uppercase tracking-[0.2em]">AURADIGITAL</h3>
+            <p className="text-background/60 text-sm leading-relaxed max-w-xs">
+              Architecting premier digital experiences for visionary brands and luxury firms worldwide.
             </p>
           </div>
 
-          {/* Quick Links */}
-          <div className="space-y-3">
-            <h4 className="font-semibold">Quick Links</h4>
-            <nav className="space-y-2">
-              <a href="#about" className="block text-sm hover:opacity-80 transition-opacity">
-                About
+          {/* Navigation */}
+          <div className="space-y-8">
+            <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-background/40">Navigation</h4>
+            <nav className="space-y-4">
+              <a href="#about" className="block text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors">
+                Narrative
               </a>
-              <a href="#services" className="block text-sm hover:opacity-80 transition-opacity">
-                Services
+              <a href="#services" className="block text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors">
+                Expertise
               </a>
-              <a href="#portfolio" className="block text-sm hover:opacity-80 transition-opacity">
+              <a href="#work" className="block text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors">
                 Portfolio
               </a>
-              <a href="#contact" className="block text-sm hover:opacity-80 transition-opacity">
-                Contact
+              <a href="#contact" className="block text-sm font-bold uppercase tracking-widest hover:text-primary transition-colors">
+                Inquiry
               </a>
             </nav>
           </div>
 
-          {/* Contact */}
-          <div className="space-y-3">
-            <h4 className="font-semibold">Contact</h4>
-            <div className="space-y-2">
-              <a href="mailto:santhoshinipac@gmail.com" className="flex items-center gap-2 text-sm hover:opacity-80 transition-opacity">
+          {/* Communications */}
+          <div className="space-y-8">
+            <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-background/40">Communications</h4>
+            <div className="space-y-4">
+              <a href="mailto:auradigital.studio.sc@gmail.com" className="flex items-center gap-3 text-sm font-bold hover:text-primary transition-colors">
                 <Mail size={16} />
                 Email
               </a>
-              <a href="tel:+918309804089" className="flex items-center gap-2 text-sm hover:opacity-80 transition-opacity">
+              <a href="tel:+918309804089" className="flex items-center gap-3 text-sm font-bold hover:text-primary transition-colors">
                 <Phone size={16} />
-                Phone
+                Call
               </a>
             </div>
           </div>
 
-          {/* Social */}
-          <div className="space-y-3">
-            <h4 className="font-semibold">Follow</h4>
-            <div className="flex gap-3">
-              <a href="#" className="p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors">
+          {/* Social Presence */}
+          <div className="space-y-8">
+            <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-background/40">Presence</h4>
+            <div className="flex gap-4">
+              <a href="#" className="w-10 h-10 rounded-xl bg-background/5 flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-500 border border-background/10">
                 <Github size={18} />
               </a>
-              <a href="#" className="p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors">
+              <a href="#" className="w-10 h-10 rounded-xl bg-background/5 flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-500 border border-background/10">
                 <Linkedin size={18} />
               </a>
-              <a href="#" className="p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors">
+              <a href="#" className="w-10 h-10 rounded-xl bg-background/5 flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-500 border border-background/10">
                 <Twitter size={18} />
               </a>
             </div>
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-white/10 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-center md:text-left text-sm text-primary-foreground/80">
-              © {currentYear} Auradigital-sc – Web Development Agency. All rights reserved.
+        {/* Footer Bottom */}
+        <div className="pt-12 border-t border-background/5">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-background/30 text-center md:text-left">
+              © {currentYear} AURADIGITAL — ALL RIGHTS RESERVED.
             </p>
-            <div className="flex gap-6 text-sm">
-              <a href="#" className="hover:opacity-80 transition-opacity">
-                Privacy
+            <div className="flex gap-10">
+              <a href="#" className="text-[10px] font-bold uppercase tracking-[0.2em] text-background/30 hover:text-background transition-colors">
+                Privacy Policy
               </a>
-              <a href="#" className="hover:opacity-80 transition-opacity">
-                Terms
+              <a href="#" className="text-[10px] font-bold uppercase tracking-[0.2em] text-background/30 hover:text-background transition-colors">
+                Terms of Service
               </a>
             </div>
           </div>

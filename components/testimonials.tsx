@@ -1,104 +1,122 @@
-import { Star } from 'lucide-react'
+'use client'
+
+import { Star, Quote } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 export function Testimonials() {
   const testimonials = [
     {
       id: 1,
-      content:
-        'Auradigital-sc delivered our project on time and exceeded all our expectations. The code quality is exceptional and the entire team was incredibly responsive to our feedback.',
-      author: 'Sarah Johnson',
-      role: 'Founder, TechStartup Inc.',
+      name: 'Alexander Vogt',
+      role: 'CEO, Alpine Resorts',
+      content: 'AURADIGITAL transformed our booking experience. The performance and aesthetic quality they delivered are simply unmatched in the luxury travel sector.',
       rating: 5,
     },
     {
       id: 2,
-      content:
-        'Working with Auradigital-sc was a game-changer for our business. They didn\'t just build what we asked for—they provided strategic insights that improved our entire product.',
-      author: 'Michael Chen',
-      role: 'Product Director, Commerce Co.',
+      name: 'Elena Rossi',
+      role: 'Founding Partner, Rossi & Co.',
+      content: 'Professionalism at its peak. Their architectural approach to web development ensured our portfolio resonates perfectly with our high-end clientele.',
       rating: 5,
     },
     {
       id: 3,
-      content:
-        'The attention to detail and commitment to clean, maintainable code sets Auradigital-sc apart. They\'re not just developers; they\'re partners invested in your success.',
-      author: 'Emma Rodriguez',
-      role: 'CEO, Creative Agency',
-      rating: 5,
-    },
-    {
-      id: 4,
-      content:
-        'Best decision we made was partnering with Auradigital-sc for our MVP. Their rapid development approach got us to market faster than we thought possible.',
-      author: 'David Williams',
-      role: 'Co-founder, SaaS Venture',
-      rating: 5,
-    },
-    {
-      id: 5,
-      content:
-        'Outstanding performance optimization. Our site speed improved by 60% after their work. Highly recommend for any project-focused organization.',
-      author: 'Lisa Park',
-      role: 'Marketing Director, Enterprise Corp',
-      rating: 5,
-    },
-    {
-      id: 6,
-      content:
-        'Professional, communicative, and technically skilled. Auradigital-sc handled our complex backend requirements with ease and delivered a bulletproof solution.',
-      author: 'James Murphy',
-      role: 'CTO, Financial Tech Firm',
+      name: 'Marcus Thorne',
+      role: 'Director, Thorne Estates',
+      content: 'Exceptional strategic insight. They didn’t just build a website; they architected a digital engine that has significantly increased our strategic inquiry rate.',
       rating: 5,
     },
   ]
 
-  return (
-    <section className="py-2 md:py-4 bg-gradient-to-b from-background via-cyan-50/30 to-blue-50/30 dark:from-background dark:via-cyan-950/15 dark:to-blue-950/15">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="max-w-3xl mb-16 slide-up">
-          <h2 className="text-3xl md:text-4xl font-bold gradient-text mb-4">
-            Trusted by Leading Companies
-          </h2>
-          <p className="text-foreground/80 leading-relaxed">
-            Hear from the companies and founders who've partnered with us to transform their digital vision into reality.
-          </p>
-        </div>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  }
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.map((testimonial, idx) => (
-            <div
+  const itemVariants = {
+    hidden: { opacity: 0, scale: 0.95, y: 20 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+      },
+    },
+  }
+
+  return (
+    <section id="testimonials" className="section-padding bg-secondary relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="max-w-3xl mb-24"
+        >
+          <h2 className="text-sm font-black uppercase tracking-[0.3em] text-primary mb-6">Testimonials</h2>
+          <h3 className="text-4xl md:text-6xl font-black text-foreground mb-8 leading-tight">
+            Trusted by <span className="text-primary/20 bg-clip-text bg-gradient-to-r from-primary to-accent">Industry Visionaries</span>.
+          </h3>
+          <p className="text-xl text-muted-foreground leading-relaxed">
+            Elite partnerships built on trust, precision, and the consistent delivery of exceptional digital results.
+          </p>
+        </motion.div>
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+        >
+          {testimonials.map((testimonial) => (
+            <motion.div
               key={testimonial.id}
-              className="p-6 bg-card rounded-xl border border-primary/20 shadow-md hover:shadow-lg hover:shadow-primary/20 hover:border-primary/50 transition-all duration-300 hover-lift slide-up flex flex-col"
-              style={{ animationDelay: `${idx * 50}ms` }}
+              variants={itemVariants}
+              whileHover={{ y: -5, transition: { duration: 0.3 } }}
+              className="premium-card relative flex flex-col h-full group"
             >
-              {/* Star Rating */}
-              <div className="flex gap-1 mb-4">
+              <Quote className="absolute top-8 right-8 w-10 h-10 text-primary/10 group-hover:text-primary/20 transition-colors" />
+
+              <div className="flex gap-1 mb-8">
                 {[...Array(testimonial.rating)].map((_, i) => (
                   <Star
                     key={i}
-                    size={18}
-                    className="fill-primary text-primary drop-shadow-sm"
+                    size={16}
+                    className="fill-primary text-primary"
                   />
                 ))}
               </div>
 
-              {/* Content */}
-              <p className="text-foreground/80 leading-relaxed mb-6 flex-1 text-sm">
-                "{testimonial.content}"
-              </p>
-
-              {/* Author Info */}
-              <div className="pt-4 border-t border-primary/10">
-                <p className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                  {testimonial.author}
+              <blockquote className="flex-1 mb-8">
+                <p className="text-lg font-medium text-foreground leading-relaxed italic">
+                  "{testimonial.content}"
                 </p>
-                <p className="text-sm text-foreground/60">{testimonial.role}</p>
+              </blockquote>
+
+              <div className="flex items-center gap-4 pt-8 border-t border-border/50">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center font-black text-primary text-xs">
+                  {testimonial.name.split(' ').map(n => n[0]).join('')}
+                </div>
+                <div>
+                  <h4 className="font-black text-foreground uppercase tracking-wider text-xs">
+                    {testimonial.name}
+                  </h4>
+                  <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest mt-1">
+                    {testimonial.role}
+                  </p>
+                </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

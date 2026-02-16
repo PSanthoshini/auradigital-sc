@@ -3,58 +3,66 @@ import { Check } from 'lucide-react'
 export function WhyChoose() {
   const reasons = [
     {
-      title: 'Clean & Modern UI Design',
-      description: 'Beautiful interfaces that users love to interact with',
+      title: 'Immersive Design',
+      description: 'Sophisticated interfaces engineered to elevate brand perception.',
     },
     {
-      title: 'Mobile-First Responsive Design',
-      description: 'Perfect experience on any device, from mobile to desktop',
+      title: 'Responsive Mastery',
+      description: 'Flawless execution across every conceivable device and resolution.',
     },
     {
-      title: 'Fast Delivery Without Compromise',
-      description: 'Rapid development without sacrificing code quality',
+      title: 'Methodical Velocity',
+      description: 'Rapid development cycles without compromising technical integrity.',
     },
     {
-      title: 'Clear Communication',
-      description: 'Regular updates and transparency throughout the project',
+      title: 'Transparent Strategy',
+      description: 'Clear, consistent communication and strategic project reporting.',
     },
     {
-      title: 'Scalable Architecture',
-      description: 'Code that grows with your business and stays maintainable',
+      title: 'Future-Proofing',
+      description: 'Architecting scalable systems designed for sustained growth.',
     },
   ]
 
   return (
-    <section className="py-2 md:py-4 bg-gradient-to-br from-primary/5 to-accent/5">
+    <section className="section-padding bg-background relative overflow-hidden">
+      {/* Subtle background accent */}
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_bottom_right,var(--color-primary)/0.02,transparent_50%)]" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div>
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-12">
-            Why Choose Auradigital-sc
-          </h2>
+          <div className="max-w-3xl mb-24 slide-up">
+            <h2 className="text-sm font-black uppercase tracking-[0.3em] text-primary mb-6">Advantage</h2>
+            <h3 className="text-4xl md:text-6xl font-black text-foreground leading-[1.1]">
+              Why Visionaries <span className="text-primary/20 bg-clip-text bg-gradient-to-r from-primary to-accent">Choose Us</span>.
+            </h3>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-24">
             {reasons.map((reason, index) => (
               <div
                 key={index}
-                className="p-4 bg-background rounded-lg border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300 slide-up"
-                style={{ animationDelay: `${index * 50}ms` }}
+                className="premium-card !p-6 group slide-up flex flex-col justify-between"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center mb-3">
-                  <Check className="w-4 h-4 text-primary" />
+                <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center mb-6 transition-all duration-500 group-hover:bg-primary group-hover:text-primary-foreground">
+                  <Check className="w-5 h-5" />
                 </div>
-                <h3 className="font-semibold text-foreground mb-1 text-sm">
-                  {reason.title}
-                </h3>
-                <p className="text-foreground/70 text-xs">
-                  {reason.description}
-                </p>
+                <div>
+                  <h4 className="font-black text-foreground mb-3 text-base leading-tight group-hover:text-primary transition-colors">
+                    {reason.title}
+                  </h4>
+                  <p className="text-muted-foreground text-xs leading-relaxed">
+                    {reason.description}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
 
-          <div className="max-w-3xl mx-auto p-8 bg-primary/5 rounded-lg border border-primary/10 slide-up" style={{ animationDelay: '250ms' }}>
-            <p className="text-foreground/80 leading-relaxed text-center">
-              We're not just service providers – we're partners in your digital journey. Every project is approached with the same level of care and expertise, whether it's a simple landing page or a complex web application. Our goal is to deliver solutions that exceed your expectations and provide real business value.
+          <div className="max-w-4xl mx-auto p-12 bg-secondary rounded-[2.5rem] border border-border/50 slide-up" style={{ animationDelay: '500ms' }}>
+            <p className="text-xl text-muted-foreground leading-relaxed text-center font-medium italic">
+              "We operate as a strategic partner, not just a service provider. Our objective is to engineer digital legacies that resonate with your audience and deliver unassailable market value."
             </p>
           </div>
         </div>

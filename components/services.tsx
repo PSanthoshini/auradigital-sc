@@ -1,83 +1,117 @@
-import { Globe, Code, Zap, Server, Rocket, Gauge } from 'lucide-react'
+'use client'
+
+import { Code2, Smartphone, Globe, Shield, Rocket, Palette } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 export function Services() {
   const services = [
     {
+      title: 'Global Web Architecture',
+      description: 'Engineering resilient, distributed web systems designed for infinite scalability and ultra-low latency.',
       icon: Globe,
-      title: 'Static & Business Websites',
-      description: 'Professional, fast-loading websites perfect for showcasing your business and engaging customers online.',
+      color: 'primary',
     },
     {
-      icon: Code,
-      title: 'Full-Stack Web Applications',
-      description: 'Complete web solutions from database to UI, built with modern technologies and best practices.',
+      title: 'Sophisticated UI/UX',
+      description: 'Crafting minimalist, high-conversion interfaces that resonate with luxury brands and discerning users.',
+      icon: Palette,
+      color: 'accent',
     },
     {
-      icon: Zap,
-      title: 'React / Next.js Development',
-      description: 'Lightning-fast, interactive web applications using industry-leading frameworks and tools.',
+      title: 'Premier Engineering',
+      description: 'Utilizing Next.js, TypeScript, and high-performance cloud infrastructure to build industry-leading products.',
+      icon: Code2,
+      color: 'primary',
     },
     {
-      icon: Server,
-      title: 'Backend & API Development',
-      description: 'Robust server-side solutions with secure APIs, scalable databases, and real-time capabilities.',
+      title: 'Secure Ecosystems',
+      description: 'Implementing advanced security protocols and privacy-first architectures for total digital protection.',
+      icon: Shield,
+      color: 'accent',
     },
     {
+      title: 'Strategic Performance',
+      description: 'Meticulous optimization achieving perfect lighthouse scores and instantaneous user interactions.',
       icon: Rocket,
-      title: 'MVP Development for Startups',
-      description: 'Accelerate your startup with rapid MVP development that validates your idea and attracts investors.',
+      color: 'primary',
     },
     {
-      icon: Gauge,
-      title: 'Website Performance & Optimization',
-      description: 'Improve speed, SEO, and user experience with comprehensive performance audits and optimization.',
+      title: 'Adaptive Solutions',
+      description: 'Fluid, cross-platform experiences that maintain brand integrity across all devices and resolutions.',
+      icon: Smartphone,
+      color: 'accent',
     },
   ]
 
-  const iconColors = [
-    { bg: 'from-primary/20 to-secondary/20', icon: 'text-primary' },
-    { bg: 'from-secondary/20 to-accent/20', icon: 'text-secondary' },
-    { bg: 'from-accent/20 to-primary/20', icon: 'text-accent' },
-    { bg: 'from-primary/20 to-accent/20', icon: 'text-primary' },
-    { bg: 'from-secondary/20 to-primary/20', icon: 'text-secondary' },
-    { bg: 'from-accent/20 to-secondary/20', icon: 'text-accent' },
-  ]
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  }
 
   return (
-    <section id="services" className="py-2 md:py-4 bg-gradient-to-b from-background via-blue-50/30 to-purple-50/30 dark:from-background dark:via-blue-950/10 dark:to-purple-950/10">
+    <section id="services" className="section-padding bg-background relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mb-16 slide-up">
-          <h2 className="text-3xl md:text-4xl font-bold gradient-text mb-4">
-            Our Services
-          </h2>
-          <p className="text-foreground/80 leading-relaxed">
-            Comprehensive web development services tailored to your business needs, from concept to deployment.
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="max-w-3xl mb-24"
+        >
+          <h2 className="text-sm font-black uppercase tracking-[0.3em] text-primary mb-6">Expertise</h2>
+          <h3 className="text-4xl md:text-6xl font-black text-foreground mb-8 leading-tight">
+            Specialized in <span className="text-primary/20 bg-clip-text bg-gradient-to-r from-primary to-accent">Premier Infrastructure</span>.
+          </h3>
+          <p className="text-xl text-muted-foreground leading-relaxed">
+            We deliver more than just code. We build the technological foundation for the next generation of industry leaders.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+        >
           {services.map((service, index) => {
             const Icon = service.icon
-            const colors = iconColors[index]
             return (
-              <div
+              <motion.div
                 key={index}
-                className="group p-6 bg-card rounded-xl border border-border/50 hover:border-primary/50 shadow-md hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 hover-lift slide-up overflow-hidden"
-                style={{ animationDelay: `${index * 50}ms` }}
+                variants={itemVariants}
+                whileHover={{ y: -10, transition: { duration: 0.3 } }}
+                className="premium-card group hover:border-primary/20 transition-all duration-500"
               >
-                <div className={`p-3 bg-gradient-to-br ${colors.bg} rounded-lg w-fit mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                  <Icon className={`w-6 h-6 ${colors.icon}`} />
+                <div className="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center mb-8 group-hover:bg-primary transition-all duration-500">
+                  <Icon className="w-7 h-7 text-primary group-hover:text-primary-foreground transition-all duration-500" />
                 </div>
-                <h3 className="text-lg font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
+                <h4 className="text-2xl font-black text-foreground mb-4 group-hover:text-primary transition-colors">
                   {service.title}
-                </h3>
-                <p className="text-foreground/70 text-sm leading-relaxed">
+                </h4>
+                <p className="text-muted-foreground leading-relaxed text-sm">
                   {service.description}
                 </p>
-              </div>
+              </motion.div>
             )
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

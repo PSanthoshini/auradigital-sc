@@ -1,104 +1,172 @@
 'use client'
-import { ExternalLink } from 'lucide-react'
+import { useState, useRef, useEffect } from 'react'
+import { ExternalLink, ChevronDown } from 'lucide-react'
+import { projects, Project } from '@/lib/projects'
+import { cn } from '@/lib/utils'
+import { motion, AnimatePresence } from 'framer-motion'
 
 export function Portfolio() {
-  const projects = [
-    {
-      id: 1,
-      title: 'Banquet Hall',
-      category: 'website',
-      description: 'A premium banquet hall booking platform with elegant design and seamless user experience.',
-      tech: ['Next.js', 'React', 'Tailwind CSS'],
-      image: '🎉',
-      link: 'https://banquet-hall-gold.vercel.app/',
-      featured: false,
-    },
-    {
-      id: 2,
-      title: 'Botaniq Flora',
-      category: 'ecommerce',
-      description: 'Modern plant-themed e-commerce platform with smooth interactions and responsive design.',
-      tech: ['React', 'Next.js', 'Tailwind CSS'],
-      image: '🌿',
-      link: 'https://botaniq-flora.vercel.app/',
-      featured: false,
-    },
-    {
-      id: 3,
-      title: 'Architexture',
-      category: 'website',
-      description: 'Architectural portfolio showcasing modern designs and innovative structures.',
-      tech: ['Next.js', 'Framer Motion', 'Tailwind CSS'],
-      image: '🏛️',
-      link: 'https://architexture.vercel.app/',
-      featured: false,
-    },
+  const [filter, setFilter] = useState<Project['category'] | 'All'>('All')
+  const [isOpen, setIsOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
+
+  const categories: (Project['category'] | 'All')[] = [
+    'All',
+    'Hotel/Resort',
+    'Architect',
+    'Banquet Hall',
+    'Flower Shop',
   ]
 
+  const filteredProjects = filter === 'All'
+    ? projects
+    : projects.filter(p => p.category === filter)
+
+  // Close dropdown on click outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false)
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => document.removeEventListener("mousedown", handleClickOutside)
+  }, [])
+
   return (
-    <section id="work" className="py-2 md:py-4 bg-gradient-to-b from-background via-purple-50/40 to-blue-50/40 dark:from-background dark:via-purple-950/15 dark:to-blue-950/15">
+    <section id="work" className="section-padding bg-background relative overflow-hidden">
+      {/* Subtle background accent */}
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,var(--color-primary)/0.02,transparent_50%)]" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="max-w-3xl mb-12 slide-up">
-          <h2 className="text-3xl md:text-4xl font-bold gradient-text mb-4">
-            Our Work
-          </h2>
-          <p className="text-foreground/80 leading-relaxed">
-            A selection of our recent projects.
-          </p>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="max-w-2xl"
+          >
+            <h2 className="text-sm font-black uppercase tracking-[0.3em] text-primary mb-6">Our Portfolio</h2>
+            <h3 className="text-4xl md:text-6xl font-black text-foreground leading-[1.1]">
+              A Gallery of <span className="text-primary/20 bg-clip-text bg-gradient-to-r from-primary to-accent">Premier Works</span>.
+            </h3>
+          </motion.div>
+
+          {/* Category Filter Dropdown */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="relative"
+            ref={dropdownRef}
+          >
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="group flex items-center justify-between min-w-[200px] px-6 py-4 bg-secondary rounded-2xl border border-border/50 text-xs font-black uppercase tracking-widest text-foreground hover:border-primary/30 transition-all duration-500"
+            >
+              <span className="flex flex-col items-start gap-1">
+                <span className="text-[10px] text-muted-foreground font-bold">Category</span>
+                {filter}
+              </span>
+              <ChevronDown className={cn("w-4 h-4 text-primary transition-transform duration-500", isOpen && "rotate-180")} />
+            </button>
+
+            {/* Dropdown Menu */}
+            <AnimatePresence>
+              {isOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  className="absolute right-0 top-full mt-4 w-[240px] p-2 bg-background/95 backdrop-blur-xl rounded-2xl border border-border/50 shadow-2xl z-50 origin-top"
+                >
+                  {categories.map((cat) => (
+                    <button
+                      key={cat}
+                      onClick={() => {
+                        setFilter(cat)
+                        setIsOpen(false)
+                      }}
+                      className={cn(
+                        "w-full text-left px-4 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all duration-300",
+                        filter === cat
+                          ? "bg-primary text-primary-foreground"
+                          : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                      )}
+                    >
+                      {cat}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
         </div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, idx) => (
-            <div
-              key={project.id}
-              className="group rounded-xl border border-primary/20 overflow-hidden hover:border-primary/60 shadow-md hover:shadow-xl hover:shadow-primary/20 transition-all duration-300 hover-lift slide-up flex flex-col"
-              style={{ animationDelay: `${idx * 50}ms` }}
-            >
-              <a href={project.link} target="_blank" rel="noopener noreferrer" className="block h-full flex flex-col">
-                {/* Project Image */}
-                <div
-                  className="bg-gradient-to-br from-primary/20 via-secondary/15 to-accent/20 flex items-center justify-center relative overflow-hidden h-48"
-                >
-                  <div className="text-6xl group-hover:scale-110 transition-transform duration-300 float">
-                    {project.image}
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent group-hover:from-primary/20 transition-colors duration-300" />
-                </div>
-
-                {/* Project Info */}
-                <div className="p-6 bg-gradient-to-br from-card to-card/80 dark:from-card dark:to-card/60 flex-1 flex flex-col justify-between">
-                  <div className="space-y-3">
-                    <div className="flex items-start justify-between">
-                      <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
-                        {project.title}
-                      </h3>
-                      <ExternalLink size={18} className="text-foreground/50 group-hover:text-primary transition-colors" />
+        <motion.div
+          layout
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+        >
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project, idx) => (
+              <motion.div
+                key={project.id}
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.5 }}
+                className="premium-card !p-0 group"
+              >
+                <a href={project.link} target="_blank" rel="noopener noreferrer" className="block h-full group flex flex-col">
+                  {/* Project Image */}
+                  <div className="relative aspect-[16/10] overflow-hidden rounded-t-2xl">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="object-cover w-full h-full transition-all duration-700 group-hover:scale-110 group-hover:rotate-1"
+                    />
+                    <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                    <div className="absolute top-4 left-4">
+                      <span className="px-4 py-1.5 bg-background/90 backdrop-blur-md rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-foreground border border-border/50">
+                        {project.category}
+                      </span>
                     </div>
-                    <p className="text-sm text-foreground/70 leading-relaxed">
+                  </div>
+
+                  {/* Project Info */}
+                  <div className="p-8 space-y-4">
+                    <div className="flex items-start justify-between">
+                      <h4 className="text-2xl font-black text-foreground group-hover:text-primary transition-colors">
+                        {project.title}
+                      </h4>
+                      <ExternalLink size={20} className="text-muted-foreground group-hover:text-primary transition-colors" />
+                    </div>
+                    <p className="text-muted-foreground leading-relaxed text-sm">
                       {project.description}
                     </p>
-                  </div>
 
-                  {/* Tech Stack */}
-                  <div className="space-y-4 pt-4 border-t border-primary/10 mt-4">
-                    <div className="flex flex-wrap gap-2">
+                    {/* Tech Stack */}
+                    <div className="flex flex-wrap gap-2 pt-4">
                       {project.tech.map((t) => (
                         <span
                           key={t}
-                          className="text-xs px-3 py-1 bg-gradient-to-r from-primary/20 to-secondary/20 text-primary rounded-full border border-primary/20 hover:border-primary/50 transition-colors"
+                          className="text-[10px] px-3 py-1 bg-secondary text-foreground/70 rounded-full border border-border/50 font-bold uppercase tracking-wider"
                         >
                           {t}
                         </span>
                       ))}
                     </div>
                   </div>
-                </div>
-              </a>
-            </div>
-          ))}
-        </div>
+                </a>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </section>
   )
