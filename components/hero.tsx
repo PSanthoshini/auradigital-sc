@@ -71,30 +71,7 @@ export function Hero() {
             </a>
           </motion.div>
 
-          {/* Minimal Trust Indicators */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8, duration: 1 }}
-            className="pt-24 grid grid-cols-2 md:grid-cols-4 gap-12 max-w-4xl mx-auto opacity-40 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-700"
-          >
-            <div className="flex flex-col items-center gap-2">
-              <span className="text-3xl font-black tabular-nums">1.2s</span>
-              <span className="text-[10px] uppercase tracking-widest font-black">LCP Score</span>
-            </div>
-            <div className="flex flex-col items-center gap-2">
-              <span className="text-3xl font-black tabular-nums">99.9%</span>
-              <span className="text-[10px] uppercase tracking-widest font-black">Reliability</span>
-            </div>
-            <div className="flex flex-col items-center gap-2">
-              <span className="text-3xl font-black tabular-nums">100%</span>
-              <span className="text-[10px] uppercase tracking-widest font-black">Security Score</span>
-            </div>
-            <div className="flex flex-col items-center gap-2">
-              <span className="text-3xl font-black tabular-nums">24/7</span>
-              <span className="text-[10px] uppercase tracking-widest font-black">Active Monitoring</span>
-            </div>
-          </motion.div>
+
         </div>
       </div>
     </section>
