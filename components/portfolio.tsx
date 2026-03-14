@@ -16,6 +16,8 @@ export function Portfolio() {
     'Architect',
     'Banquet Hall',
     'Flower Shop',
+    'Tattoo Shop',
+    'Wedding & Events',
   ]
 
   const filteredProjects = filter === 'All'
@@ -166,6 +168,20 @@ export function Portfolio() {
               </motion.div>
             ))}
           </AnimatePresence>
+        </motion.div>
+
+        {/* Custom Requirements Note */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mt-24 p-8 md:p-12 rounded-[2rem] bg-secondary/30 border border-border/50 backdrop-blur-sm text-center max-w-4xl mx-auto relative overflow-hidden group"
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+          <p className="text-lg md:text-2xl text-muted-foreground font-medium leading-relaxed relative z-10">
+            Don't see your industry here? <span className="text-foreground font-black">We've got you covered.</span> We build bespoke digital solutions for all business types, tailored specifically to your unique requirements and vision.
+          </p>
         </motion.div>
       </div>
     </section>

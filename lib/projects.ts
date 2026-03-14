@@ -1,7 +1,7 @@
 export interface Project {
   id: number;
   title: string;
-  category: 'Hotel/Resort' | 'Architect' | 'Banquet Hall' | 'Flower Shop';
+  category: 'Hotel/Resort' | 'Architect' | 'Banquet Hall' | 'Flower Shop' | 'Tattoo Shop' | 'Wedding & Events';
   description: string;
   tech: string[];
   image: string;
@@ -85,5 +85,25 @@ export const projects: Project[] = [
     tech: ['React', 'E-commerce', 'Tailwind CSS'],
     image: 'https://images.unsplash.com/photo-1444930694458-01babf71870c?q=80&w=2071&auto=format&fit=crop',
     link: 'https://botaniq-flora.vercel.app',
+  },
+  // Tattoo Shop
+  {
+    id: 9,
+    title: 'InkTattoo Studio',
+    category: 'Tattoo Shop',
+    description: 'A professional tattoo studio portfolio showcasing artistic excellence and safety.',
+    tech: ['Next.js', 'React', 'Tailwind CSS'],
+    image: 'https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?q=80&w=2071&auto=format&fit=crop',
+    link: 'https://tatoo-sample-sc.vercel.app',
+  },
+  // Marriage & Events
+  {
+    id: 10,
+    title: 'Veda Events',
+    category: 'Wedding & Events',
+    description: 'Premier wedding and event planning service creating unforgettable experiences.',
+    tech: ['Next.js', 'Framer Motion', 'Tailwind CSS'],
+    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop',
+    link: 'https://veda-events-sc.vercel.app/',
   },
 ];
