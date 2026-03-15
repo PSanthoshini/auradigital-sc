@@ -47,7 +47,7 @@ export function Hero() {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-3xl mx-auto font-medium"
           >
-            AURADIGITAL crafts high-performance, visually stunning web applications for visionary brands. We blend strategic design with cutting-edge engineering.
+            AURADIGITAL crafts high-performance, AI-first web applications for visionary brands. We blend strategic design with cutting-edge engineering.
           </motion.p>
 
           <motion.div

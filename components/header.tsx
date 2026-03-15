@@ -44,9 +44,15 @@ export function Header() {
             <a
               key={link.href}
               href={link.href}
-              className="text-muted-foreground hover:text-primary transition-all text-xs font-black uppercase tracking-widest"
+              className="relative text-muted-foreground hover:text-primary transition-all text-xs font-black uppercase tracking-widest group"
             >
               {link.label}
+              {link.label === 'Services' && (
+                <span className="absolute -top-3 -right-4 flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-40"></span>
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-primary mt-[3px] ml-[3px]"></span>
+                </span>
+              )}
             </a>
           ))}
         </nav>
