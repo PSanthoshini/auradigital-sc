@@ -18,7 +18,7 @@ export function Portfolio() {
     'Flower Shop',
     'Tattoo Shop',
     'Wedding & Events',
-    'E-commerce',
+    'Saree Shop',
   ]
 
   const filteredProjects = filter === 'All'

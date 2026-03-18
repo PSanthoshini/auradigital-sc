@@ -1,7 +1,7 @@
 export interface Project {
   id: number;
   title: string;
-  category: 'Hotel/Resort' | 'Architect' | 'Banquet Hall' | 'Flower Shop' | 'Tattoo Shop' | 'Wedding & Events' | 'E-commerce';
+  category: 'Hotel/Resort' | 'Architect' | 'Banquet Hall' | 'Flower Shop' | 'Tattoo Shop' | 'Wedding & Events' | 'Saree Shop';
   description: string;
   tech: string[];
   image: string;
@@ -106,14 +106,23 @@ export const projects: Project[] = [
     image: 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop',
     link: 'https://veda-events-sc.vercel.app/',
   },
-  // E-commerce
+  // Saree Shop
   {
     id: 11,
-    title: 'Saree SC Store',
-    category: 'E-commerce',
-    description: 'A premium saree e-commerce platform offering a curated collection of traditional and modern designs.',
-    tech: ['Next.js', 'React', 'E-commerce'],
-    image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=2070&auto=format&fit=crop',
+    title: 'Aura Silk Store',
+    category: 'Saree Shop',
+    description: 'A premium, luxury saree e-commerce website with elegant traditional collections.',
+    tech: ['Next.js', 'React', 'Tailwind CSS'],
+    image: '/projects/saree-1.png',
     link: 'https://sample-e-commerce-sc.lovable.app/',
+  },
+  {
+    id: 12,
+    title: 'Heritage Saree Emporium',
+    category: 'Saree Shop',
+    description: 'A modern e-commerce storefront showcasing artistic craftsmanship in Indian sarees.',
+    tech: ['Next.js', 'Lucide React', 'Tailwind CSS'],
+    image: '/projects/saree-2.png',
+    link: 'https://saree-stores-sc.lovable.app',
   },
 ];
