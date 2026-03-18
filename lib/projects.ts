@@ -1,7 +1,7 @@
 export interface Project {
   id: number;
   title: string;
-  category: 'Hotel/Resort' | 'Architect' | 'Banquet Hall' | 'Flower Shop' | 'Tattoo Shop' | 'Wedding & Events';
+  category: 'Hotel/Resort' | 'Architect' | 'Banquet Hall' | 'Flower Shop' | 'Tattoo Shop' | 'Wedding & Events' | 'E-commerce';
   description: string;
   tech: string[];
   image: string;
@@ -105,5 +105,15 @@ export const projects: Project[] = [
     tech: ['Next.js', 'Framer Motion', 'Tailwind CSS'],
     image: 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop',
     link: 'https://veda-events-sc.vercel.app/',
+  },
+  // E-commerce
+  {
+    id: 11,
+    title: 'Saree SC Store',
+    category: 'E-commerce',
+    description: 'A premium saree e-commerce platform offering a curated collection of traditional and modern designs.',
+    tech: ['Next.js', 'React', 'E-commerce'],
+    image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=2070&auto=format&fit=crop',
+    link: 'https://sample-e-commerce-sc.lovable.app/',
   },
 ];
